@@ -31,8 +31,10 @@ INSERT INTO Courses VALUES
 (1,'Java'),
 (2,'DBMS'),
 (5,'Python');
+
 SELECT * FROM Students
 SELECT * FROM Courses
+
 --Rahul → match
 
 --Priya → match
@@ -133,25 +135,18 @@ FROM Students
 CROSS JOIN Courses;
 
 
---Output (Example)
-
---Name	Course
---Rahul	Java
---Rahul	DBMS
---Rahul	Python
---Priya	Java
---Priya	DBMS
---Priya	Python
---Aman	Java
---Aman	DBMS
---Aman	Python
 
 --LOGIC
 --Students rows × Courses rows
 --4 × 3 = 12 rows
 
 
+--Joins Using Alias
 
+SELECT S.StudentID, S.Name, C.CourseName
+FROM Students S
+INNER JOIN Courses C
+ON S.StudentID = S.StudentID;
 
 
 --Golden Trick

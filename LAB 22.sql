@@ -31,7 +31,7 @@ INSERT INTO Village (VillageID, VillageName, CityID) VALUES
 (106, 'Dhoraji', 5);
 
 
-                                                              --Part – A--
+                                                 --Part – A--
 --1. Display all the villages of Rajkot city.  
     Select v.VillageName from Village v Join City c
     on v.CityID = c.CityID
@@ -50,6 +50,7 @@ INSERT INTO Village (VillageID, VillageName, CityID) VALUES
      from Village v  Join City c
     on v.CityID = c.CityID
     where v.VillageID is null
+
 --5. Count the total number of villages in each city. 
    Select c.CityName,count(v.VillageID) as COUNT 
      from Village v  Join City c
@@ -59,8 +60,8 @@ INSERT INTO Village (VillageID, VillageName, CityID) VALUES
 --Part – B 
 --6. Display number of villages of Rajkot city.  
 
-     Select c.CityName,count(v.VillageID) as COUNT 
-     from Village v  Join City c
+    Select c.CityName,count(v.VillageID) as COUNT 
+    from Village v  Join City c
     on v.CityID = c.CityID
     where c.CityName='Rajkot'
     group by c.CityName
@@ -74,7 +75,7 @@ INSERT INTO Village (VillageID, VillageName, CityID) VALUES
     
 --8. Display villages of Rajkot & Junagadh city.  
 
- SELECT v.VillageName, c.CityName
+SELECT v.VillageName, c.CityName
 FROM Village v
 JOIN City c ON v.CityID = c.CityID
 WHERE c.CityName IN ('Rajkot', 'Junagadh');
@@ -87,12 +88,12 @@ WHERE c.CityName IN ('Rajkot', 'Junagadh');
     on v.CityID = c.CityID
     where c.CityName = 'Surat'
 --10. Display city along with their villages & pin code whose Remarks is Good. 
-     Select c.CityName,v.VillageName,c.Pincode from
+    Select c.CityName,v.VillageName,c.Pincode from
     City c Join Village v
     on c.CityID = v.CityID
     where c.Remarks = 'GOOD'
---11. Display the city name of Falla village. 
 
+--11. Display the city name of Falla village. 
      Select c.CityName from
     City c Join Village v
     on c.CityID = v.CityID

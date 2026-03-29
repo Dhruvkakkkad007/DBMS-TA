@@ -2,18 +2,22 @@
 
 -- I want to make StudentID as  the Primary Key Constraints
 
+--age => not null
+
 CREATE TABLE Student (
-    StudentID INT PRIMARY KEY ,
+    StudentID INT PRIMARY KEY,
     Name VARCHAR(50),
     Age INT NOT NULL
 );
+select * from Student
+
 --insert records
 DROP TABLE Student
 insert into Student values(1,'Rahul',18) 
 
 insert into Student values(1,'Raj',19)
 --
-insert into Student values(2,'XYZ',NULL)
+insert into Student values(NULL,'XYZ',20)
 
 
 
@@ -27,14 +31,17 @@ SELECT * FROM Student
 CREATE TABLE Student_1(
     StudentID INT PRIMARY KEY,
     Name VARCHAR(50),
-    Age INT CHECK (AGE>=18)
+    Age INT CHECK (AGE>18)
 );
 
 DROP TABLE Student_1
 --CHECK (Age >= 18)
 INSERT INTO Student_1 VALUES (1, 'Rahul', 16);
+
+
 INSERT INTO Student_1 VALUES (2, 'RR', 20);
 INSERT INTO Student_1 VALUES (3, 'RR', 21);
+
 SELECT * FROM Student_1
 
 --3.Default Constraints
@@ -44,16 +51,17 @@ CREATE TABLE Employee(
     Name VARCHAR(50),
     City VARCHAR(50) DEFAULT 'RAJKOT'
 );
+
 drop table Employee
 
 
-INSERT INTO Employee (EmpID, Name)
-VALUES (1, 'Amit');
+INSERT INTO Employee (EmpID, Name,CITY)
+VALUES (2, 'Amit','JUNAGADH');
 
 SELECT * FROM Employee
 
 
---4.Unique Key Constraints
+--4.Unique Key Constraints  ACCEPTS NULL ONLY ONE TIME
 
 CREATE TABLE Student_2 (
     RollNo INT PRIMARY KEY,
@@ -63,7 +71,7 @@ CREATE TABLE Student_2 (
 
 INSERT INTO Student_2 VALUES (101, 'dhruv@gmail.com', '9876543210');
 INSERT INTO Student_2 VALUES (102, 'rahul@gmail.com', '9876543211');
-
+SELECT * FROM Student_2
 
 
 INSERT INTO Student_2 VALUES (103, 'dhruv@gmail.com', '987654312');
@@ -78,6 +86,7 @@ CREATE TABLE Department (
 );
 
 INSERT INTO Department VALUES(101,'IT')
+
 INSERT INTO Department VALUES(102,'CSE')
 
 SELECT * FROM Department
@@ -89,14 +98,17 @@ CREATE TABLE Employee_1 (
     FOREIGN KEY (DeptID) REFERENCES Department(DeptID)
 );
 INSERT INTO Employee_1 VALUES(1,'DHRUV',101)
+
 INSERT INTO Employee_1 VALUES(2,'MANAV',105)
 
+DROP TABLE Employee_1
 SELECT * FROM Employee_1
 
 
 --6.AUTO INCREMENT DEMO--
 
 --SYNTAX 
+
 --COLUMN_NAME DATA_TYPE IDENTITY(1,1) 
 
 CREATE TABLE Student_4 (
@@ -154,5 +166,6 @@ CREATE TABLE Student_Info (
     JoiningDate DATETIME NOT NULL DEFAULT GETDATE(),
     Bklog INT NOT NULL CHECK (Bklog >= 0),
     StateName VARCHAR(50) DEFAULT 'Gujarat'
-    --FOREIGN KEY (DeptID) REFERENCES Department(DeptID)
+    --DEPTID INT,
+    --FOREIGN KEY (DeptID) REFERENCES Department(DeptID) 
 );
